@@ -66,7 +66,7 @@ describe ("Thermostat", function() {
     });
     it ("goes to the new max temp if powersave is toggled", function(){
       thermostat._degrees = 35;
-      thermostat.setPowerSave(false); 
+      thermostat.setPowerSave(false);
       expect(thermostat.temperature()).toEqual(25)
     });
 

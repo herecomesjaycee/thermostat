@@ -2,17 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <script src="jquery-3.1.1.min.js"></script>
   <script src="src/thermostat.js"></script>
   <script src="src/index.js"></script>
+
   <title>Thermo-man </title>
 </head>
 
 <body>
   <div id="control panel">
     <div id="display">
-      temp:  <br>
-      power save:<br>
-      energy usage: <br>
+      <div id="temperatureDisplay">temp: 20</div>
+      <div id="powerSaveDisplay">power save: true</div>
+      <div id="energyUsageDisplay">energy usage: medium-useage</div>
     </div>
     <div id="controls" >
       <button id="tempUp"> up </button>
@@ -21,5 +23,6 @@
       <button id="powerSave"> power save </button>
     </div>
   </div>
+  <p> HELLO </p>
 </body>
 </html>

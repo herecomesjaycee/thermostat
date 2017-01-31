@@ -4,13 +4,15 @@ describe ("Thermostat", function() {
   var thermostat;
   var defaultTemp;
   var defaultMin;
-  var defaultMaxSave;
+  var defaultMaxSaveOn;
+  var defaultMaxSaveOff;
 
   beforeEach(function() {
     thermostat = new Thermostat;
     defaultTemp = thermostat._STARTING;
     defaultMin = thermostat._MIN_TEMP;
-    defaultMaxSave = thermostat._MAX_TEMP_SAVE;
+    defaultMaxSaveOn = thermostat._MAX_SAVER_ON;
+    defaultMaxSaveOff = thermostat._MAX_SAVER_OFF;
   });
   describe("power saving on",function() {
     describe("#initialize", function() {
@@ -40,6 +42,13 @@ describe ("Thermostat", function() {
         expect(function() {thermostat.tempDown()}).toThrow(error);
       });
     });
+    it ("can't go above 25 degrees", function(){
+      for(var i = defaultTemp; i < defaultMaxSaveOn; i++){
+        thermostat.tempUp();
+      }
+      var error = "temperature cannot go above maximum value"
+      expect(function() {thermostat.tempUp()}).toThrow(error);
+    });
   });
   describe("power saving off",function() {
     beforeEach(function() {
@@ -50,11 +59,32 @@ describe ("Thermostat", function() {
       expect(thermostat.getPowerSave()).toEqual(false)
     });
     it ("can't go above 32 degrees", function(){
-      for(var i = defaultTemp; i < defaultMaxSave; i++){
+      for(var i = defaultTemp; i < defaultMaxSaveOff; i++){
         thermostat.tempUp();
       }
       var error = "temperature cannot go above maximum value"
       expect(function() {thermostat.tempUp()}).toThrow(error);
+    });
+  });
+  describe("#reset", function(){
+    it ("expect temperature to reset value to 20", function() {
+      thermostat.tempUp();
+      thermostat.reset();
+      expect(thermostat.temperature()).toEqual(defaultTemp);
+    });
+  });
+  describe("#energy", function(){
+    it ("expect energy usage to equal 'low-useage'", function() {
+      thermostat._degrees = 17;
+      expect(thermostat.energy()).toEqual("low-useage");
+    });
+    it ("expect energy usage to equal 'medium-useage'", function() {
+      thermostat._degrees = 24;
+      expect(thermostat.energy()).toEqual("medium-useage");
+    });
+    it ("expect energy usage to equal 'high-useage'", function() {
+      thermostat._degrees = 26;
+      expect(thermostat.energy()).toEqual("high-useage");
     });
   });
 });

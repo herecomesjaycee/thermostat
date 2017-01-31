@@ -30,11 +30,26 @@ Thermostat.prototype._maxTemp = function (){
   return this._MAX_SAVER_OFF;
 }
 
-Thermostat.prototype.togglePowerSave = function (){ this._powerSave = !this._powerSave}
+Thermostat.prototype._maxTempAdjust = function (){
+  console.log(this._maxTemp())
+  console.log(this._degrees)
+  if (this._maxTemp() < this._degrees) {
+    console.log(this._maxTemp())
+    this._degrees = this._maxTemp();
+  }
+}
+
+Thermostat.prototype.togglePowerSave = function (){
+   this._powerSave = !this._powerSave
+   this._maxTempAdjust()
+ }
 
 Thermostat.prototype.getPowerSave = function () {return this._powerSave};
 
-Thermostat.prototype.setPowerSave = function (args) {this._powerSave = args};
+Thermostat.prototype.setPowerSave = function (args) {
+  this._powerSave = args;
+  this._maxTempAdjust();
+};
 
 Thermostat.prototype.reset = function () {
   this._degrees = this._STARTING;

@@ -66,7 +66,7 @@ describe ("Thermostat", function() {
     });
     it ("goes to the new max temp if powersave is toggled", function(){
       thermostat._degrees = 35;
-      thermostat.setPowerSave(true);
+      thermostat.setPowerSave(false); 
       expect(thermostat.temperature()).toEqual(25)
     });
 
@@ -103,4 +103,14 @@ describe ("Thermostat", function() {
       expect(thermostat.energy()).toEqual("high-useage");
     });
   });
+  describe("#_maxTemp",function(){
+    it ("returns 32 when powersave is on",function(){
+      expect(thermostat._maxTemp()).toEqual(defaultMaxSaveOn)
+    })
+    it ("returns 25 when powersave is off",function(){
+      thermostat.togglePowerSave();
+      expect(thermostat._maxTemp()).toEqual(defaultMaxSaveOff);
+    })
+  });
+
 });

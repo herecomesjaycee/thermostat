@@ -25,6 +25,7 @@ Thermostat.prototype.tempDown = function () {
   };
   this._degrees -= 1;
 };
+Thermostat.prototype.togglePowerSave = function (){ this._powerSave = !this._powerSave}
 
 Thermostat.prototype.getPowerSave = function () {return this._powerSave};
 

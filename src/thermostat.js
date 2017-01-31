@@ -3,7 +3,6 @@ function Thermostat() {
   this._MIN_TEMP = 10;
   this._MAX_SAVER_ON = 32;
   this._MAX_SAVER_OFF = 25;
-  this._maxTemp = this._MAX_SAVER_ON;
   this._degrees = this._STARTING;
   this._powerSave = true;
 };
@@ -13,7 +12,7 @@ Thermostat.prototype.temperature = function() {
 };
 
 Thermostat.prototype.tempUp = function () {
-  if (this._degrees + 1 > this._maxTemp){
+  if (this._degrees + 1 > this._maxTemp()){
     throw "temperature cannot go above maximum value";
   };
   this._degrees += 1;
@@ -25,17 +24,17 @@ Thermostat.prototype.tempDown = function () {
   };
   this._degrees -= 1;
 };
+
+Thermostat.prototype._maxTemp = function (){
+  if (this._powerSave){return this._MAX_SAVER_ON}
+  return this._MAX_SAVER_OFF;
+}
+
 Thermostat.prototype.togglePowerSave = function (){ this._powerSave = !this._powerSave}
 
 Thermostat.prototype.getPowerSave = function () {return this._powerSave};
 
-Thermostat.prototype.setPowerSave = function (args) {
-  if (args === true){
-    this._maxTemp = this._MAX_SAVER_ON
-  }else{
-    this._maxTemp = this._MAX_SAVER_OFF
-  }
-  this._powerSave = args};
+Thermostat.prototype.setPowerSave = function (args) {this._powerSave = args};
 
 Thermostat.prototype.reset = function () {
   this._degrees = this._STARTING;

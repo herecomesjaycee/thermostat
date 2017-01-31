@@ -49,12 +49,27 @@ describe ("Thermostat", function() {
       var error = "temperature cannot go above maximum value"
       expect(function() {thermostat.tempUp()}).toThrow(error);
     });
+    it ("can toggle power saving",function(){
+      thermostat.togglePowerSave()
+      expect(thermostat.getPowerSave()).toEqual(false)
+    });
   });
+
   describe("power saving off",function() {
     beforeEach(function() {
       thermostat = new Thermostat;
       thermostat.setPowerSave(false);
     });
+    it ("can toggle power saving",function(){
+      thermostat.togglePowerSave()
+      expect(thermostat.getPowerSave()).toEqual(true)
+    });
+    it ("goes to the new max temp if powersave is toggled", function(){
+      thermostat._degrees = 35;
+      thermostat.setPowerSave(true);
+      expect(thermostat.temperature()).toEqual(25)
+    });
+
     it ("can tell it's off", function() {
       expect(thermostat.getPowerSave()).toEqual(false)
     });
@@ -66,6 +81,7 @@ describe ("Thermostat", function() {
       expect(function() {thermostat.tempUp()}).toThrow(error);
     });
   });
+
   describe("#reset", function(){
     it ("expect temperature to reset value to 20", function() {
       thermostat.tempUp();

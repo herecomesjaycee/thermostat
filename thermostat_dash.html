@@ -5,17 +5,16 @@
   <script src="jquery-3.1.1.min.js"></script>
   <script src="src/thermostat.js"></script>
   <script src="src/index.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="public/index.css">
   <title>Thermo-man </title>
 </head>
 
 <body>
-  <div>
-  <div id="control panel" style="float:left">
+  <div id="control_panel" style="float:left">
     <div id="display">
-      <div id="temperatureDisplay">temp: 20</div>
-      <div id="powerSaveDisplay">power save: true</div>
-      <div id="energyUsageDisplay">energy usage: medium-useage</div>
+      <div id="temperatureDisplay"></div>
+      <div id="powerSaveDisplay"></div>
+      <div id="energyUsageDisplay"></div>
     </div>
     <div id="controls" >
       <button id="tempUp"> up </button>
@@ -24,27 +23,18 @@
       <button id="powerSave"> power save </button>
     </div>
   </div>
-  <div id="sidebar" style="
-  float: right;
-  background-color: black;
-  padding: 50px;
-  min-width: 300px;
-  min-height: 550px;
-  background-image: url(sidebar.png);
-  "/>
-  </div>
-</div>
-<div style="float:down;">
-  <section>
-    <h1>Current temperature: <span id="current-temperature">20</span></h1>
-    <select id="current-city">
-      <option value="london">London</option>
-      <option value="newyork">New York</option>
-      <option value="paris">Paris</option>
-      <option value="tokyo">Tokyo</option>
-    </select>
-  </section>
-</div>
-</body>
+  <div id="sidebar"><img src="public/sidebar.png"><img></div>
+    <div id="cityTemp">
+      <section>
+        <h1>Current temperature: <span id="current-temperature">20</span></h1>
+        <select id="current-city">
+          <option value="london">London</option>
+          <option value="newyork">New York</option>
+          <option value="paris">Paris</option>
+          <option value="tokyo">Tokyo</option>
+        </select>
+      </section>
+    </div>
+  </body>
 
-</html>
+  </html>

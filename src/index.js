@@ -34,10 +34,11 @@ function displayWeather(city) {
   $.get(url + token + units, function(data) {
      $('#current-temperature').text(data.main.temp);
    })
+updateDisplay()
 }
 
 var updateDisplay = function(){
-  $("#temperatureDisplay").text("temp: "+thermostat._degrees);
+  $("#temperatureDisplay").text(thermostat._degrees);
   $("#powerSaveDisplay").text("power save: "+thermostat.getPowerSave());
   $("#energyUsageDisplay").text("energy usage: "+thermostat.energy());
 }

@@ -2,6 +2,7 @@ thermostat = new Thermostat();
 
 $(document).ready(function(){
   updateDisplay();
+  //updateCity("London");
 
   $("#up").click(function (){
     thermostat.up();
@@ -27,7 +28,7 @@ $(document).ready(function(){
     var city = $("#cityList").val()
     updateCity(city);
   })
-  updateCity("London");
+
 
   });
 
@@ -36,6 +37,11 @@ var updateDisplay = function(){
   $("#powerSave").text(thermostat.powerSaveDisplay());
   $("#powerUsage").text(thermostat.usage());
   $('#powerUsage').attr('class', thermostat.usage());
+  var temperature = $('#temperature').text
+  var city = $('#cityList').val()
+  $.post('http://localhost:4567/temperature', function(temperature, city){
+     return temperature + city
+  })
 };
 
 var updateCity = function(city){

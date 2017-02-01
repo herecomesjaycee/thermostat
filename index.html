@@ -1,24 +1,28 @@
 <head>
-<link rel="stylesheet" href="main.css"/>
+<link rel="stylesheet" href="css/main.css"/>
 </head>
+
 <body>
-<div id="weather">
+<div id="weather"></div>
+<div id="information">
+  <div>Temperature: <span id="temperature"></span></div>
+  <div>Power Save:  <span id="powerSave">on</span></div>
+  <div>Power Usage: <span id="powerUsage"></span></div>
 </div>
-<div>Temperature: <span id="temperature">20</span></div>
-<div>Power Save:  <span id="powerSave">on</span></div>
-<div>Temp:  <span id="tempDisplay">TEMP</span></div>
-<div>Power Usage: <span id="powerUsage">medium-usage</span></div>
-<button id="up" class="button">Up</button>
-<button id="down" class="button">Down</button>
-<button id="togglePMS" class="button">Power Save Mode On/Off</button>
-<button id="reset" class="button">Reset</button>
-<input type="select" id="city" name="city" style="display:none;">
-<select id="cityList" name="cityList">
-<option value="London">London</option>
-<option value="NewYork">New York</option>
-<option value="Paris">Paris</option>
-<option value="Tokyo">Tokyo</option>
-</select>
+<div id="buttons">
+  <button id="up" class="button">Up</button>
+  <button id="down" class="button">Down</button>
+  <button id="togglePMS" class="button">Power Save Mode On/Off</button>
+  <button id="reset" class="button">Reset</button>
+</div>
+<section>
+  <select id="cityList"class="button">
+    <option value="london">London</option>
+    <option value="newyork">New York</option>
+    <option value="paris">Paris</option>
+    <option value="tokyo">Tokyo</option>
+  </select>
+</section>
 </body>
 
 <script src="jquery-3.1.1.min.js"></script>

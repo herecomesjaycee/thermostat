@@ -3,7 +3,7 @@ function Thermostat(){
 	this._psmOnMaxTemperature = 25;
 	this._psmOffMaxTemperature = 32;
 	this._psm = true;
-	this._temperature = this._defaultTemperature;
+	this._temperature = temperature;
 	this._defaultMaxTemperature = this._psmOnMaxTemperature;
 }
 
@@ -54,7 +54,3 @@ Thermostat.prototype.usage = function(){
 Thermostat.prototype.powerSaveDisplay = function() {
 	if (this._psm) {return "on"} else {return "off"}
 }
-
-//
-// ther = new Thermostat();
-// ther.up();

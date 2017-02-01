@@ -22,7 +22,14 @@ $(document).ready(function(){
     thermostat.togglePMS();
     updateDisplay();
   });
-});
+
+  $("#cityList").change(function(){
+    var city = $("#cityList").val()
+    updateCity(city);
+  })
+  updateCity("London");
+
+  });
 
 var updateDisplay = function(){
   $("#temperature").text(thermostat.temperature());
@@ -30,3 +37,11 @@ var updateDisplay = function(){
   $("#powerUsage").text(thermostat.usage());
   $('#powerUsage').attr('class', thermostat.usage());
 };
+
+var updateCity = function(city){
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=3f6c90a6078f0139892320231c4b918f' , function(data){ 
+    $('#weather').text("Current temperature: " + data.main.temp + " degree in " + data.name);
+  });
+
+}
+

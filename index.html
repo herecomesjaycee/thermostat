@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="main.css"/>
 </head>
 <body>
+<div id="weather">
+</div>
 <div>Temperature: <span id="temperature">20</span></div>
 <div>Power Save:  <span id="powerSave">on</span></div>
 <div>Power Usage: <span id="powerUsage">medium-usage</span></div>
@@ -9,6 +11,13 @@
 <button id="down" class="button">Down</button>
 <button id="togglePMS" class="button">Power Save Mode On/Off</button>
 <button id="reset" class="button">Reset</button>
+<input type="select" id="city" name="city" style="display:none;">
+<select id="cityList" name="cityList">
+<option value="London">London</option>
+<option value="NewYork">New York</option>
+<option value="Paris">Paris</option>
+<option value="Tokyo">Tokyo</option>
+</select>
 </body>
 
 <script src="jquery-3.1.1.min.js"></script>

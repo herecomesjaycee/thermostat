@@ -1,3 +1,24 @@
+body {
+	background-color: #7fdbbb;
+	text-align: center;
+	font-family: futura;
+	font-size: 1.5em;
+
+}
+
+.button {
+	font-size: 0.6em;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: white;
+	opacity: 0.9;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
+}
+
 .low-usage {
   color: green;
 }
@@ -9,3 +30,4 @@
 .high-usage {
   color: red;
 }
+

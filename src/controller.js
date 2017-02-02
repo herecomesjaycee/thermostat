@@ -48,9 +48,17 @@ function updateCity(city){
 
 function getServer() {
   $.getJSON("http://localhost:4567/temperature", function(result){
+    var city = result["city"];
+    var temperature = parseInt(result["temperature"])
+    console.log(city)
+    console.log(temperature)
+
+    if (city === "" || city === null){city = "London"}
     $("#cityList").val(result["city"]).change();
-    $("#temperature").text(result["temperature"]);
-    thermostat._temperature = parseInt(result["temperature"])
+
+    if (temperature < 10 || temperature > 32 || isNaN(temperature)){temperature = 20}
+    $("#temperature").text(temperature);
+    thermostat._temperature = temperature
   });
   postServer()
   updateDisplay();

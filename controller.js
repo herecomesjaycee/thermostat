@@ -1,9 +1,7 @@
-var thermostat = new Thermostat();
+var thermostat = new Thermostat()
 
 $(document).ready(function(){
   getServer();
-  updateDisplay();
-  updateCity($("#cityList").val())
 
   $("#up").click(function (){
     thermostat.up();
@@ -32,7 +30,7 @@ $(document).ready(function(){
 });
 
 function updateDisplay(){
-  $("#temperature").text(thermostat.temperature());
+  $("#temperatureDisplay").text(thermostat.temperature());
   $("#powerSave").text(thermostat.powerSaveDisplay());
   $("#powerUsage").text(thermostat.usage());
   $('#powerUsage').attr('class', thermostat.usage());
@@ -50,22 +48,20 @@ function getServer() {
   $.getJSON("http://localhost:4567/temperature", function(result){
     var city = result["city"];
     var temperature = parseInt(result["temperature"])
-    console.log(city)
-    console.log(temperature)
 
     if (city === "" || city === null){city = "London"}
     $("#cityList").val(result["city"]).change();
 
     if (temperature < 10 || temperature > 32 || isNaN(temperature)){temperature = 20}
-    $("#temperature").text(temperature);
-    thermostat._temperature = temperature
+    $("#temperatureDisplay").text(temperature);
+    thermostat = new Thermostat(temperature)
+    updateCity(city)
   });
-  postServer()
   updateDisplay();
 }
 
 function postServer() {
-  var temperature = $("#temperature").text()
+  var temperature = parseInt($("#temperatureDisplay").text())
   var city = $("#cityList").val()
   $.post("http://localhost:4567/temperature",{"city":city, "temperature":temperature})
 }

@@ -15,8 +15,14 @@ class Server < Sinatra::Base
   post '/temperature' do
     headers 'Access-Control-Allow-Origin' => '*'
     content_type :json
+
     $temperature = params[:temperature]
     $city = params[:city]
+
+    p "TEMP = "
+    p params[:temperature].to_i
+    p "CITY = "
+    p params[:city]
   end
 
   get '/temperature' do

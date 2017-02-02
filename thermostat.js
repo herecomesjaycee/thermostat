@@ -1,9 +1,11 @@
-function Thermostat(){
+console.log("IM HERE")
+
+function Thermostat(initialTemperature=20){
 	this._defaultTemperature = 20;
 	this._psmOnMaxTemperature = 25;
 	this._psmOffMaxTemperature = 32;
 	this._psm = true;
-	this._temperature = temperature;
+	this._temperature = initialTemperature;
 	this._defaultMaxTemperature = this._psmOnMaxTemperature;
 }
 

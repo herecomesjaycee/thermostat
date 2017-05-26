@@ -1,10 +1,10 @@
 # thermostat
 Thermostat built in JavaScript
 
-##Objectives
+## Objectives
 To learn Javascript, Jasmine, API, AJAX and jQuery by building a Thermostat web app. 
 
-##Business Logic
+## Business Logic
 <b>Specification:</b>
 
 - Thermostat starts at 20 degrees
@@ -18,7 +18,7 @@ To learn Javascript, Jasmine, API, AJAX and jQuery by building a Thermostat web 
 - You can ask about the thermostat's current energy usage: < 18 is low-usage, < 25 is medium-usage, anything else is high-usage.
 - (In the challenges where we add an interface, low-usage will be indicated with green, medium-usage indicated with black, high-usage indicated with red.)
 
-##Installation
+## Installation
 1) Git fork/clone this repository `git clone https://github.com/herecomesjaycee/thermostat.git`
 
 2) Change file directory `cd thermostat`
@@ -35,5 +35,5 @@ To learn Javascript, Jasmine, API, AJAX and jQuery by building a Thermostat web 
 
 *If using server to persist browser data, please use Safari as the browser. 
 
-##Screenshot
+## Screenshot
 ![screen shot 2017-02-03 at 18 04 03](https://cloud.githubusercontent.com/assets/13175171/22602474/370ff042-ea3b-11e6-8419-d23e624d6907.png)
